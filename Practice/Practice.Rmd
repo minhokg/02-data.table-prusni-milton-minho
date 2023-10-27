@@ -1,0 +1,90 @@
+---
+title: "Practice for data.table"
+subtitle: "with 7 questions"  
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(data.table)
+input <- if (file.exists("flights14.csv")) {
+  "flights14.csv"
+} else {
+  "https://raw.githubusercontent.com/Rdatatable/data.table/master/vignettes/flights14.csv"
+}
+# fast-and-friendly file reader 
+flights <- fread(input)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = TRUE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+xaringanExtra::use_tile_view()
+xaringanExtra::use_panelset()
+xaringanExtra::use_editable()
+library(xaringanthemer)
+style_solarized_dark( base_font_size = "20px",
+  text_font_size = "1.5rem",
+  header_h1_font_size = "2.5rem",
+  header_h2_font_size = "2rem",
+  header_font_google = google_font("Roboto"),
+  text_font_google = google_font("Open Sans"),
+  code_font_google = google_font("IBM Plex Mono"),
+  header_color = "#FFFFFF")
+```
+
+# Before starting...
+
+1. Basic Syntax (3 questions)
+
+2. Advanced Syntax (4 questions)
+
+3. You can use your own  
+
+4. Don't forget to import library data.table
+```{r}
+library(data.table)
+```
+
+---
+
+class: inverse, center, middle
+
+# Basic Syntax (3 questions)
+----
+---
+
+# Question 1
+
+Sort flights first by column origin in ascending order, and then by dest in decending order  
+.panelset[
+.panel[.panel-name[Your Answer]
+.can-edit[  
+]]
+.panel[.panel-name[Our Answer]
+```{r}
+ans <- flights[order(origin, -dest)]
+```
+
+]]
+
+
+
+
+
